@@ -33,6 +33,6 @@ Step 3: To download my updates:
 
   - Switch back to the my-notes branch.
 
-  - Go to Branch -> Merge into current branch and select main (or Branch -> Update from main)
+  - Go to Branch -> Update from main (or Branch -> Merge into current branch and select main
   
   - Resolve any conflicts that may arise (GitHub Desktop will guide you through this process)
