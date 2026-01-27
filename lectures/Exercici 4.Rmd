@@ -1,0 +1,45 @@
+---
+title: "Untitled"
+author: "Julia Esteve"
+date: "2026-01-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Exercise 1. Continent-wide life expectancy
+```{r, message=FALSE, warning=FALSE}
+library(gapminder)
+library(dplyr)
+gapminder
+```
+
+***1. Compute the mean life expectancy and GDP per capita for each (continent, year)***
+```{r, message=FALSE, warning=FALSE}
+tab = group_by(gapminder, continent, year) |> summarise(mean_lifeExp= mean(lifeExp, na.rm= TRUE), mean_gdpPercap= mean(gdpPercap, na.rm=TRUE))
+tab
+```
+
+***2. Do an animated scatterplot of continent life expectancy vs. GDP (transition_time(year))***
+
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(gganimate)
+animation <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) + geom_point( size = 2) + labs(x= 'GDP per Capita', Y='Life expectancy', subtitle = 'Year={frame_time}') + transition_time(year)
+animation
+```
+
+## Exercise 2. Inequality of GDP/capita across countries over time
+***1. For each year, compute the inter-quartile range of the GDP/capita across countries***
+```{r, message=FALSE, warning=FALSE}
+IQR_per_year = group_by(gapminder, year) |> summarise(gdpPercap_IQR=IQR(gdpPercap, na.rm = TRUE))
+IQR_per_year
+```
+
+***2. Do a scatterplot of IQR vs. year. Add lines to the plot***
+```{r, message=FALSE, warning=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
